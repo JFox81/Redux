@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import store from '../../store.js';
+import store from '../../store.jsx';
 import GameLayout from './GameLayout';
 import Information from '../Information/Information';
 import Field from '../Field/Field';

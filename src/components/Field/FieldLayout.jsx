@@ -1,11 +1,11 @@
 import React from 'react';
-import './FieldLayout.module.css';
+import styles from './FieldLayout.module.css';
 
 const FieldLayout = ({ cells, onCellClick }) => {
   return (
-    <div className="field-layout">
+    <div className={styles.field}>
       {cells.map((cell, idx) => (
-        <button key={idx} className="cell" onClick={() => onCellClick(idx)}>
+        <button key={idx} className={styles.cell} onClick={() => onCellClick(idx)}>
           {cell}
         </button>
       ))}

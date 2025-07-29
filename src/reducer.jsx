@@ -1,4 +1,4 @@
-// Пример простого редьюсера для игры (например, крестики-нолики)
+
 const initialState = {
   field: Array(9).fill(null),
   currentPlayer: 'X',
@@ -32,7 +32,7 @@ function gameReducer(state = initialState, action) {
   }
 }
 
-// Вспомогательная функция для определения победителя
+
 function calculateWinner(field) {
   const lines = [
     [0, 1, 2],
