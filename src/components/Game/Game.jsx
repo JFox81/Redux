@@ -1,30 +1,25 @@
-import React, { useState, useEffect } from 'react';
-import store from '../../store.jsx';
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import GameLayout from './GameLayout';
 import Information from '../Information/Information';
 import Field from '../Field/Field';
 
 const Game = () => {
-  const [state, setState] = useState(store.getState());
+  const field = useSelector(state => state.field);
+  const currentPlayer = useSelector(state => state.currentPlayer);
+  const winner = useSelector(state => state.winner);
+  const dispatch = useDispatch();
 
-  useEffect(() => {
-    const unsubscribe = store.subscribe(() => {
-      setState(store.getState());
-    });
-    return unsubscribe;
-  }, []);
-
-  const { currentPlayer, field, winner } = state;
   const isGameEnded = !!winner || field.every(cell => cell !== null && cell !== '');
   const isDraw = !winner && field.every(cell => cell !== null && cell !== '');
 
   const handleCellClick = (index) => {
     if (field[index] || winner) return;
-    store.dispatch({ type: 'MAKE_MOVE', payload: { index } });
+    dispatch({ type: 'MAKE_MOVE', payload: { index } });
   };
 
   const handleRestart = () => {
-    store.dispatch({ type: 'RESET_GAME' });
+    dispatch({ type: 'RESET_GAME' });
   };
 
   return (
